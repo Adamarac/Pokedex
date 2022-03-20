@@ -35,7 +35,7 @@ class App extends React.Component {
     const { pokemons } = this.state;
     return (
       <div className="wrapper">
-        { pokemons.map((pokemon) => <PokemonCard key={ pokemon.id } data={ pokemon } />) }
+        { pokemons.map((pokemon, index) => <PokemonCard key={ index } data={ pokemon } />) }
       </div>
     );
   }
