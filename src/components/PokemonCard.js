@@ -34,13 +34,17 @@ class PokemonCard extends React.Component {
     const { id, name, abilities, stats, sprites, types } = this.props.data;
     const { type: { name: type } } = types[0];
     const { other: { 'official-artwork':  { front_default } } } = sprites;
+    const { base_stat: hp } = stats[0];
+    const { base_stat: attack } = stats[1];
+    const { base_stat: defense } = stats[2];
+   
     const { typeClass } = this.state;
     const upperString = (string) => (string[0].toUpperCase() + string.substr(1));
 
     return (
       <div className="pokemon-card">
         <div className="pokemon-image"> 
-          <img src={ front_default } />    
+          <img src={ front_default } alt={ name } />    
         </div>
         <div className="pokemon-id">Nº { id }</div>
         <div className="pokemon-name">{ upperString(name) }</div>
@@ -51,17 +55,17 @@ class PokemonCard extends React.Component {
         
         <div className={ `${typeClass} pokemon-stats clearfix` }>
           <div className="one-third">
-            <div className="stat">100</div>
+            <div className="stat">{ hp }</div>
             <div className="stat-value">HP</div>
           </div>
       
           <div className="one-third">
-            <div className="stat">40</div>
+            <div className="stat">{ attack }</div>
             <div className="stat-value">Attack</div>
           </div>
       
           <div className="one-third no-border">
-            <div className="stat">50</div>
+            <div className="stat">{ defense }</div>
             <div className="stat-value">Defense</div>
           </div>
 
